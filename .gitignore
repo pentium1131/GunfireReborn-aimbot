@@ -1,3 +1,4 @@
 obj/
 Output/
 *.cache
+*.suo
