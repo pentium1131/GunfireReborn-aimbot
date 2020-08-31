@@ -27,152 +27,155 @@
     <DebugSymbols>false</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Main.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\MelonLoader\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Il2Cppmscorlib">
-      <HintPath>..\..\MelonLoader\Managed\Il2Cppmscorlib.dll</HintPath>
+      <HintPath>Managed\Il2Cppmscorlib.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppSystem">
+      <HintPath>Managed\Il2CppSystem.dll</HintPath>
     </Reference>
     <Reference Include="MelonLoader.ModHandler">
-      <HintPath>..\..\MelonLoader\MelonLoader.ModHandler.dll</HintPath>
+      <HintPath>Managed\MelonLoader.ModHandler.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="UnhollowerBaseLib">
-      <HintPath>..\..\MelonLoader\Managed\UnhollowerBaseLib.dll</HintPath>
+      <HintPath>Managed\UnhollowerBaseLib.dll</HintPath>
     </Reference>
     <Reference Include="UnhollowerRuntimeLib">
-      <HintPath>..\..\MelonLoader\Managed\UnhollowerRuntimeLib.dll</HintPath>
+      <HintPath>Managed\UnhollowerRuntimeLib.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Runtime">
-      <HintPath>..\..\MelonLoader\Managed\Unity.Postprocessing.Runtime.dll</HintPath>
+      <HintPath>Managed\Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
-      <HintPath>..\..\MelonLoader\Managed\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+      <HintPath>Managed\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Lightweight.Runtime">
-      <HintPath>..\..\MelonLoader\Managed\Unity.RenderPipelines.Lightweight.Runtime.dll</HintPath>
+      <HintPath>Managed\Unity.RenderPipelines.Lightweight.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>..\..\MelonLoader\Managed\Unity.TextMeshPro.dll</HintPath>
+      <HintPath>Managed\Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.dll</HintPath>
+      <HintPath>Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.AIModule.dll</HintPath>
+      <HintPath>Managed\UnityEngine.AIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AnimationModule">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.AnimationModule.dll</HintPath>
+      <HintPath>Managed\UnityEngine.AnimationModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AssetBundleModule">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+      <HintPath>Managed\UnityEngine.AssetBundleModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AudioModule">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.AudioModule.dll</HintPath>
+      <HintPath>Managed\UnityEngine.AudioModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.DirectorModule">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.DirectorModule.dll</HintPath>
+      <HintPath>Managed\UnityEngine.DirectorModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.GridModule">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.GridModule.dll</HintPath>
+      <HintPath>Managed\UnityEngine.GridModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Il2CppAssetBundleManager">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.Il2CppAssetBundleManager.dll</HintPath>
+      <HintPath>Managed\UnityEngine.Il2CppAssetBundleManager.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ImageConversionModule">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+      <HintPath>Managed\UnityEngine.ImageConversionModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+      <HintPath>Managed\UnityEngine.IMGUIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.InputModule">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.InputModule.dll</HintPath>
+      <HintPath>Managed\UnityEngine.InputModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.JSONSerializeModule">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
+      <HintPath>Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Networking">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.Networking.dll</HintPath>
+      <HintPath>Managed\UnityEngine.Networking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ParticleSystemModule">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.ParticleSystemModule.dll</HintPath>
+      <HintPath>Managed\UnityEngine.ParticleSystemModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Physics2DModule">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.Physics2DModule.dll</HintPath>
+      <HintPath>Managed\UnityEngine.Physics2DModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+      <HintPath>Managed\UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ScreenCaptureModule">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.ScreenCaptureModule.dll</HintPath>
+      <HintPath>Managed\UnityEngine.ScreenCaptureModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SharedInternalsModule">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.SharedInternalsModule.dll</HintPath>
+      <HintPath>Managed\UnityEngine.SharedInternalsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TerrainModule">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.TerrainModule.dll</HintPath>
+      <HintPath>Managed\UnityEngine.TerrainModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TerrainPhysicsModule">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.TerrainPhysicsModule.dll</HintPath>
+      <HintPath>Managed\UnityEngine.TerrainPhysicsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TextCoreModule">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.TextCoreModule.dll</HintPath>
+      <HintPath>Managed\UnityEngine.TextCoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TextRenderingModule">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+      <HintPath>Managed\UnityEngine.TextRenderingModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TilemapModule">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.TilemapModule.dll</HintPath>
+      <HintPath>Managed\UnityEngine.TilemapModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Timeline">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.Timeline.dll</HintPath>
+      <HintPath>Managed\UnityEngine.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.UI.dll</HintPath>
+      <HintPath>Managed\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UIElementsModule">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.UIElementsModule.dll</HintPath>
+      <HintPath>Managed\UnityEngine.UIElementsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UIModule">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.UIModule.dll</HintPath>
+      <HintPath>Managed\UnityEngine.UIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UNETModule">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.UNETModule.dll</HintPath>
+      <HintPath>Managed\UnityEngine.UNETModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityAnalyticsModule">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+      <HintPath>Managed\UnityEngine.UnityAnalyticsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestModule">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
+      <HintPath>Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestTextureModule">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+      <HintPath>Managed\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestWWWModule">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+      <HintPath>Managed\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VehiclesModule">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.VehiclesModule.dll</HintPath>
+      <HintPath>Managed\UnityEngine.VehiclesModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VFXModule">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.VFXModule.dll</HintPath>
+      <HintPath>Managed\UnityEngine.VFXModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VideoModule">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.VideoModule.dll</HintPath>
+      <HintPath>Managed\UnityEngine.VideoModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VRModule">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.VRModule.dll</HintPath>
+      <HintPath>Managed\UnityEngine.VRModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.XRModule">
-      <HintPath>..\..\MelonLoader\Managed\UnityEngine.XRModule.dll</HintPath>
+      <HintPath>Managed\UnityEngine.XRModule.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="Main.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
