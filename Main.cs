@@ -9,6 +9,7 @@ using HeroCameraName;
 using Item;
 using BulletChange;
 using OCServerMoveNS;
+using DataHelper;
 
 namespace zcMod
 {
@@ -27,6 +28,7 @@ namespace zcMod
         public static bool showobjinfo = false;
         public static bool showallobjinfo = false;
         public static bool limitangle = true;
+        public static bool shownpc = false;//目前只能显示第一关的隐藏门，而且进入第二关后疯狂掉帧，待完善
         public override void OnApplicationStart() // Runs after Game Initialization.
         {
             MelonLogger.Log("OnApplicationStart");
@@ -57,14 +59,14 @@ namespace zcMod
                     {
                         if (!limitangle)
                         {
-                            Weapon.value.ModifyBulletInMagzine(100, 100);//无限子弹
+                            Weapon.value.ModifyBulletInMagzine(100, 100);//不用换弹
                             Weapon.value.WeaponAttr.Radius = 500f;//爆炸范围
                         }
                         
-                        Weapon.value.WeaponAttr.Accuracy = 10000;
-                        Weapon.value.WeaponAttr.AttDis = 500f;
-                        Weapon.value.WeaponAttr.Pierce = 99;
-                        if (Weapon.value.WeaponAttr.BulletSpeed >= 50f && Weapon.value.WeaponAttr.BulletSpeed != 55f)
+                        Weapon.value.WeaponAttr.Accuracy = 10000;//子弹不扩散
+                        Weapon.value.WeaponAttr.AttDis = 500f;//射程
+                        Weapon.value.WeaponAttr.Pierce = 99; //穿透力，改了好像无效果?
+                        if (Weapon.value.WeaponAttr.BulletSpeed >= 50f && Weapon.value.WeaponAttr.BulletSpeed != 55f)//弹道速度,某些武器改了会打不到怪
                         {
                             Weapon.value.WeaponAttr.BulletSpeed = 500f;
                         }
@@ -72,18 +74,22 @@ namespace zcMod
                         {
                             Weapon.value.WeaponAttr.BulletSpeed = 500f;
                         }
-                        Weapon.value.WeaponAttr.Stability = 10000;
+                        Weapon.value.WeaponAttr.Stability = 10000;//后坐力
                         if (Weapon.value.WeaponAttr.Radius > 0f)
                         {
-                            Weapon.value.WeaponAttr.Radius = 9f;//爆炸范围
+                            Weapon.value.WeaponAttr.Radius = 9f;//爆炸范围(会影响爆炸类武器、火标和电手套)
                         }
                     }
                 }
-                if (Input.GetKeyUp(KeyCode.Insert))//暴力模式
+                if (Input.GetKeyUp(KeyCode.Home))//暴力模式全图锁
+                {
+                    shownpc = !shownpc;
+                }
+                if (Input.GetKeyUp(KeyCode.Insert))//暴力模式全图锁
                 {
                     limitangle = !limitangle;
                 }
-                if (Input.GetKey(KeyCode.F))//按F键自瞄
+                if (Input.GetKey(KeyCode.F))//按F键自瞄(请按个人喜好修改)
                 {
                     List<NewPlayerObject> monsters = NewPlayerManager.GetMonsters();
                     if (monsters != null)
@@ -125,14 +131,13 @@ namespace zcMod
                                 
                                 if (hit.collider.gameObject.layer == 0 || hit.collider.gameObject.layer == 30 || hit.collider.gameObject.layer == 31) //&& hit.collider.name.Contains("_")
                                 {
-
                                     if (showobjinfo)
                                     {
                                         MelonLogger.Log(hit.collider.name);
                                         MelonLogger.Log(hit.collider.gameObject.layer.ToString());
                                     }
 
-                                    visible = false;
+                                    visible = false;//判断怪物是否可见
                                     break;
                                 }
                             }
@@ -163,8 +168,6 @@ namespace zcMod
                             Quaternion rot2 = Quaternion.LookRotation(fw);
                             CameraManager.MainCamera.rotation = rot2;
 
-                            //AutoAimat.Rotation(nearmons, 500f);
-
                         }
                     }
                 }
@@ -188,32 +191,19 @@ namespace zcMod
         {
             try
             {
-                Dictionary<int, NewPlayerObject> hidedoors = NewPlayerManager.PlayerDict;
-                if (hidedoors != null)
+                if (shownpc)
                 {
-                    foreach (KeyValuePair<int, NewPlayerObject> door in hidedoors)
+                    foreach (var obj in NewPlayerManager.PlayerDict)
                     {
-                        Vector3 vec = CameraManager.MainCameraCom.WorldToViewportPoint(door.value.gameTrans.position);
-                        if (vec.z > 0f)
+                        var val = obj.Value;
+                        if (val.centerPointTrans == null) continue;
+                        if (!ShowObject(val)) continue;
+                        var screenPos = CameraManager.MainCameraCom.WorldToScreenPoint(val.centerPointTrans.transform.position);
+                        if (screenPos.z > 0)
                         {
-                            vec.y = 1f - vec.y;
-                            float scrx = Screen.width * vec.x;
-                            float scry = Screen.height * vec.y;
-                            Rect rect = new Rect(scrx - 25f, scry - 10f, 50f, 20f);
-                            
-                            if(door.value.FightType== ServerDefine.FightType.WARRIOR_OBSTACLE_NORMAL)
-                            {
-                                if (door.value.ComLst.Count > 0)
-                                {
-                                    if (door.value.ComLst[0].luaparent.modelData.Name == "隐藏门")
-                                    {
-                                        Vector3 dis = door.value.gameTrans.position - CameraManager.MainCamera.position;
-                                        GUI.Label(rect, dis.magnitude.ToString("f1"));
-                                    }
-                                }
-                            }
+                            var dist = Vector3.Distance(HeroMoveManager.HeroObj.centerPointTrans.position, val.centerPointTrans.position).ToString("0.0");
+                            GUI.Label(new Rect(screenPos.x, Screen.height - screenPos.y, 800, 50), FightTypeToString(val) + "(" + dist + "m)");
                         }
-
                     }
                 }
                 return;
@@ -238,5 +228,45 @@ namespace zcMod
         {
             MelonLogger.Log("VRChat_OnUiManagerInit");
         }
+
+        public bool ShowObject(NewPlayerObject obj)
+        {
+            if (obj.FightType == ServerDefine.FightType.NWARRIOR_DROP_EQUIP)
+                return true;
+            else if (obj.FightType == ServerDefine.FightType.NWARRIOR_DROP_RELIC)
+                return true;
+            else if (obj.FightType == ServerDefine.FightType.NWARRIOR_NPC_SMITH)
+                return true;
+            else if (obj.FightType == ServerDefine.FightType.NWARRIOR_NPC_SHOP)
+                return true;
+            else if (obj.FightType == ServerDefine.FightType.WARRIOR_OBSTACLE_NORMAL && (obj.Shape == 4406 || obj.Shape == 4419 || obj.Shape == 4427))
+                return true;
+            else if (obj.FightType == ServerDefine.FightType.NWARRIOR_NPC_EVENT)
+                return true;
+            else if (obj.FightType == ServerDefine.FightType.NWARRIOR_NPC_ITEMBOX)
+                return true;
+            return false;
+
+        }
+        public String FightTypeToString(NewPlayerObject obj)
+        {
+            if (obj.FightType == ServerDefine.FightType.NWARRIOR_DROP_EQUIP)
+                return DataMgr.GetWeaponData(obj.Shape).Name + " +" + obj.DropOPCom.WeaponInfo.SIProp.Grade.ToString();
+            else if (obj.FightType == ServerDefine.FightType.NWARRIOR_DROP_RELIC)
+                return DataMgr.GetRelicData(obj.DropOPCom.RelicSid).Name;
+            else if (obj.FightType == ServerDefine.FightType.NWARRIOR_NPC_SMITH)
+                return "工匠";
+            else if (obj.FightType == ServerDefine.FightType.NWARRIOR_NPC_SHOP)
+                return "商人";
+            else if (obj.FightType == ServerDefine.FightType.WARRIOR_OBSTACLE_NORMAL && (obj.Shape == 4406 || obj.Shape == 4419 || obj.Shape == 4427))
+                return "秘境";
+            else if (obj.FightType == ServerDefine.FightType.NWARRIOR_NPC_EVENT)
+                return "宝箱";
+            else if (obj.FightType == ServerDefine.FightType.NWARRIOR_NPC_ITEMBOX)
+                return "宝箱";
+            return "unk";
+        }
+
+
     }
 }
