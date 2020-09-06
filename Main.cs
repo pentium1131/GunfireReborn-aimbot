@@ -10,6 +10,7 @@ using Item;
 using BulletChange;
 using OCServerMoveNS;
 using DataHelper;
+using TMPro;
 
 namespace zcMod
 {
@@ -60,24 +61,32 @@ namespace zcMod
                         if (!limitangle)
                         {
                             Weapon.value.ModifyBulletInMagzine(100, 100);//不用换弹
-                            Weapon.value.WeaponAttr.Radius = 500f;//爆炸范围
+                            if (Weapon.value.WeaponAttr.Radius != 500f)
+                                Weapon.value.WeaponAttr.Radius = 500f;//爆炸范围
                         }
-                        
-                        Weapon.value.WeaponAttr.Accuracy = 10000;//子弹不扩散
-                        Weapon.value.WeaponAttr.AttDis = 500f;//射程
-                        Weapon.value.WeaponAttr.Pierce = 99; //穿透力，改了好像无效果?
+
+                        if (Weapon.value.WeaponAttr.Accuracy != 10000) 
+                            Weapon.value.WeaponAttr.Accuracy = 10000;//子弹不扩散
+                        if (Weapon.value.WeaponAttr.AttDis != 500f)
+                            Weapon.value.WeaponAttr.AttDis = 500f;//射程
+                        //Weapon.value.WeaponAttr.Pierce = 99; //穿透力，改了好像无效果?
+
                         if (Weapon.value.WeaponAttr.BulletSpeed >= 50f && Weapon.value.WeaponAttr.BulletSpeed != 55f)//弹道速度,某些武器改了会打不到怪
                         {
-                            Weapon.value.WeaponAttr.BulletSpeed = 500f;
+                            if (Weapon.value.WeaponAttr.BulletSpeed != 500f)
+                                Weapon.value.WeaponAttr.BulletSpeed = 500f;
                         }
                         else if (Weapon.value.WeaponAttr.BulletSpeed == 30f) 
                         {
-                            Weapon.value.WeaponAttr.BulletSpeed = 500f;
+                            if (Weapon.value.WeaponAttr.BulletSpeed != 500f)
+                                Weapon.value.WeaponAttr.BulletSpeed = 500f;
                         }
-                        Weapon.value.WeaponAttr.Stability = 10000;//后坐力
+                        if (Weapon.value.WeaponAttr.Stability != 10000)
+                            Weapon.value.WeaponAttr.Stability = 10000;//后坐力
                         if (Weapon.value.WeaponAttr.Radius > 0f)
                         {
-                            Weapon.value.WeaponAttr.Radius = 9f;//爆炸范围(会影响爆炸类武器、火标和电手套)
+                            if (Weapon.value.WeaponAttr.Radius < 9f)
+                                Weapon.value.WeaponAttr.Radius = 9f;//爆炸范围(会影响爆炸类武器、火标和电手套)
                         }
                     }
                 }
@@ -85,10 +94,34 @@ namespace zcMod
                 {
                     shownpc = !shownpc;
                 }
+                if (Input.GetKeyUp(KeyCode.Delete))
+                {
+                    //if (WarShopManager.ShopItemDict.count > 0) 
+                    //{
+                    //    bool first = true;
+                    //    WarShopObject fobj = null;
+                    //    foreach (KeyValuePair<int, WarShopObject> shopitem in WarShopManager.ShopItemDict)
+                    //    {
+                    //        if (shopitem.value.PropertyDict.ContainsKey("Inscription"))
+                    //        {
+                    //            List<int> Inscription = new List<int>();
+                    //            Inscription.Add(4820); Inscription.Add(4821); Inscription.Add(4822); Inscription.Add(4823); Inscription.Add(4824); Inscription.Add(4825); Inscription.Add(4827);
+                    //            shopitem.value.PropertyDict["Inscription"] = Inscription;
+                    //        }
+                    //
+                    //    }
+                    //}
+                }
+                //War_Shop_Event
+                //InitWarShop
+
+
                 if (Input.GetKeyUp(KeyCode.Insert))//暴力模式全图锁
                 {
                     limitangle = !limitangle;
                 }
+                
+                //if (Input.GetMouseButton(1)) 
                 if (Input.GetKey(KeyCode.F))//按F键自瞄(请按个人喜好修改)
                 {
                     List<NewPlayerObject> monsters = NewPlayerManager.GetMonsters();
