@@ -29,7 +29,7 @@ namespace zcMod
         public static bool showobjinfo = false;
         public static bool showallobjinfo = false;
         public static bool limitangle = true;
-        public static bool shownpc = false;//目前只能显示第一关的隐藏门，而且进入第二关后疯狂掉帧，待完善
+        public static bool shownpc = false;
         public override void OnApplicationStart() // Runs after Game Initialization.
         {
             MelonLogger.Log("OnApplicationStart");
