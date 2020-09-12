@@ -30,6 +30,7 @@ namespace zcMod
         public static bool showallobjinfo = false;
         public static bool limitangle = true;
         public static bool shownpc = false;
+        public static bool imreload = false;
         public override void OnApplicationStart() // Runs after Game Initialization.
         {
             MelonLogger.Log("OnApplicationStart");
@@ -60,9 +61,13 @@ namespace zcMod
                     {
                         if (!limitangle)
                         {
-                            Weapon.value.ModifyBulletInMagzine(100, 100);//不用换弹
+                            Weapon.value.ModifyBulletInMagzine(100, 100);//无限子弹，不用换弹
                             if (Weapon.value.WeaponAttr.Radius != 500f)
                                 Weapon.value.WeaponAttr.Radius = 500f;//爆炸范围
+                        }
+                        if (imreload)
+                        {
+                            Weapon.value.ReloadBulletImmediately(); //消耗子弹，光速换弹
                         }
 
                         if (Weapon.value.WeaponAttr.Accuracy != 10000) 
@@ -111,6 +116,10 @@ namespace zcMod
                     //
                     //    }
                     //}
+                }
+                if (Input.GetKeyUp(KeyCode.V))
+                {
+                    imreload = !imreload;
                 }
                 //War_Shop_Event
                 //InitWarShop
