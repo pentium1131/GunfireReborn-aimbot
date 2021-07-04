@@ -32,149 +32,97 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
-      <HintPath>Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>E:\SteamLibrary\steamapps\common\Gunfire Reborn\MelonLoader\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="csharpdata">
+      <HintPath>E:\SteamLibrary\steamapps\common\Gunfire Reborn\MelonLoader\Managed\csharpdata.dll</HintPath>
     </Reference>
     <Reference Include="Il2Cppmscorlib">
-      <HintPath>Managed\Il2Cppmscorlib.dll</HintPath>
+      <HintPath>E:\SteamLibrary\steamapps\common\Gunfire Reborn\MelonLoader\Managed\Il2Cppmscorlib.dll</HintPath>
     </Reference>
-    <Reference Include="Il2CppSystem">
-      <HintPath>Managed\Il2CppSystem.dll</HintPath>
+    <Reference Include="MelonLoader">
+      <HintPath>E:\SteamLibrary\steamapps\common\Gunfire Reborn\MelonLoader\MelonLoader.dll</HintPath>
     </Reference>
-    <Reference Include="MelonLoader.ModHandler">
-      <HintPath>Managed\MelonLoader.ModHandler.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
     <Reference Include="UnhollowerBaseLib">
-      <HintPath>Managed\UnhollowerBaseLib.dll</HintPath>
+      <HintPath>E:\SteamLibrary\steamapps\common\Gunfire Reborn\MelonLoader\Managed\UnhollowerBaseLib.dll</HintPath>
     </Reference>
     <Reference Include="UnhollowerRuntimeLib">
-      <HintPath>Managed\UnhollowerRuntimeLib.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Postprocessing.Runtime">
-      <HintPath>Managed\Unity.Postprocessing.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.Runtime">
-      <HintPath>Managed\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Lightweight.Runtime">
-      <HintPath>Managed\Unity.RenderPipelines.Lightweight.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>Managed\Unity.TextMeshPro.dll</HintPath>
+      <HintPath>E:\SteamLibrary\steamapps\common\Gunfire Reborn\MelonLoader\Managed\UnhollowerRuntimeLib.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>Managed\UnityEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.AIModule">
-      <HintPath>Managed\UnityEngine.AIModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.AnimationModule">
-      <HintPath>Managed\UnityEngine.AnimationModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.AssetBundleModule">
-      <HintPath>Managed\UnityEngine.AssetBundleModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.AudioModule">
-      <HintPath>Managed\UnityEngine.AudioModule.dll</HintPath>
+      <HintPath>E:\SteamLibrary\steamapps\common\Gunfire Reborn\MelonLoader\Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>Managed\UnityEngine.CoreModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.DirectorModule">
-      <HintPath>Managed\UnityEngine.DirectorModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.GridModule">
-      <HintPath>Managed\UnityEngine.GridModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Il2CppAssetBundleManager">
-      <HintPath>Managed\UnityEngine.Il2CppAssetBundleManager.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.ImageConversionModule">
-      <HintPath>Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+      <HintPath>E:\SteamLibrary\steamapps\common\Gunfire Reborn\MelonLoader\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>Managed\UnityEngine.IMGUIModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.InputModule">
-      <HintPath>Managed\UnityEngine.InputModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.JSONSerializeModule">
-      <HintPath>Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>Managed\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.ParticleSystemModule">
-      <HintPath>Managed\UnityEngine.ParticleSystemModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Physics2DModule">
-      <HintPath>Managed\UnityEngine.Physics2DModule.dll</HintPath>
+      <HintPath>E:\SteamLibrary\steamapps\common\Gunfire Reborn\MelonLoader\Managed\UnityEngine.IMGUIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>Managed\UnityEngine.PhysicsModule.dll</HintPath>
+      <HintPath>E:\SteamLibrary\steamapps\common\Gunfire Reborn\MelonLoader\Managed\UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.ScreenCaptureModule">
-      <HintPath>Managed\UnityEngine.ScreenCaptureModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.SharedInternalsModule">
-      <HintPath>Managed\UnityEngine.SharedInternalsModule.dll</HintPath>
+    <Reference Include="UnityEngine.SubstanceModule">
+      <HintPath>E:\SteamLibrary\steamapps\common\Gunfire Reborn\MelonLoader\Managed\UnityEngine.SubstanceModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TerrainModule">
-      <HintPath>Managed\UnityEngine.TerrainModule.dll</HintPath>
+      <HintPath>E:\SteamLibrary\steamapps\common\Gunfire Reborn\MelonLoader\Managed\UnityEngine.TerrainModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TerrainPhysicsModule">
-      <HintPath>Managed\UnityEngine.TerrainPhysicsModule.dll</HintPath>
+      <HintPath>E:\SteamLibrary\steamapps\common\Gunfire Reborn\MelonLoader\Managed\UnityEngine.TerrainPhysicsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TextCoreModule">
-      <HintPath>Managed\UnityEngine.TextCoreModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.TextRenderingModule">
-      <HintPath>Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+      <HintPath>E:\SteamLibrary\steamapps\common\Gunfire Reborn\MelonLoader\Managed\UnityEngine.TextCoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TilemapModule">
-      <HintPath>Managed\UnityEngine.TilemapModule.dll</HintPath>
+      <HintPath>E:\SteamLibrary\steamapps\common\Gunfire Reborn\MelonLoader\Managed\UnityEngine.TilemapModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Timeline">
-      <HintPath>Managed\UnityEngine.Timeline.dll</HintPath>
+      <HintPath>E:\SteamLibrary\steamapps\common\Gunfire Reborn\MelonLoader\Managed\UnityEngine.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TimelineModule">
+      <HintPath>E:\SteamLibrary\steamapps\common\Gunfire Reborn\MelonLoader\Managed\UnityEngine.TimelineModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TLSModule">
+      <HintPath>E:\SteamLibrary\steamapps\common\Gunfire Reborn\MelonLoader\Managed\UnityEngine.TLSModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>Managed\UnityEngine.UI.dll</HintPath>
+      <HintPath>E:\SteamLibrary\steamapps\common\Gunfire Reborn\MelonLoader\Managed\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UIElementsModule">
-      <HintPath>Managed\UnityEngine.UIElementsModule.dll</HintPath>
+      <HintPath>E:\SteamLibrary\steamapps\common\Gunfire Reborn\MelonLoader\Managed\UnityEngine.UIElementsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UIModule">
-      <HintPath>Managed\UnityEngine.UIModule.dll</HintPath>
+      <HintPath>E:\SteamLibrary\steamapps\common\Gunfire Reborn\MelonLoader\Managed\UnityEngine.UIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UmbraModule">
+      <HintPath>E:\SteamLibrary\steamapps\common\Gunfire Reborn\MelonLoader\Managed\UnityEngine.UmbraModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UNETModule">
-      <HintPath>Managed\UnityEngine.UNETModule.dll</HintPath>
+      <HintPath>E:\SteamLibrary\steamapps\common\Gunfire Reborn\MelonLoader\Managed\UnityEngine.UNETModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityAnalyticsModule">
-      <HintPath>Managed\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+      <HintPath>E:\SteamLibrary\steamapps\common\Gunfire Reborn\MelonLoader\Managed\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityConnectModule">
+      <HintPath>E:\SteamLibrary\steamapps\common\Gunfire Reborn\MelonLoader\Managed\UnityEngine.UnityConnectModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityTestProtocolModule">
+      <HintPath>E:\SteamLibrary\steamapps\common\Gunfire Reborn\MelonLoader\Managed\UnityEngine.UnityTestProtocolModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
+      <HintPath>E:\SteamLibrary\steamapps\common\Gunfire Reborn\MelonLoader\Managed\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+      <HintPath>E:\SteamLibrary\steamapps\common\Gunfire Reborn\MelonLoader\Managed\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestModule">
-      <HintPath>Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
+      <HintPath>E:\SteamLibrary\steamapps\common\Gunfire Reborn\MelonLoader\Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestTextureModule">
-      <HintPath>Managed\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+      <HintPath>E:\SteamLibrary\steamapps\common\Gunfire Reborn\MelonLoader\Managed\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestWWWModule">
-      <HintPath>Managed\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.VehiclesModule">
-      <HintPath>Managed\UnityEngine.VehiclesModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.VFXModule">
-      <HintPath>Managed\UnityEngine.VFXModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.VideoModule">
-      <HintPath>Managed\UnityEngine.VideoModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.VRModule">
-      <HintPath>Managed\UnityEngine.VRModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.XRModule">
-      <HintPath>Managed\UnityEngine.XRModule.dll</HintPath>
+      <HintPath>E:\SteamLibrary\steamapps\common\Gunfire Reborn\MelonLoader\Managed\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

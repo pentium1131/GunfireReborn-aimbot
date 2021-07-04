@@ -1,5 +1,5 @@
-﻿using System.Reflection;
-using MelonLoader;
+﻿using MelonLoader;
+using System.Reflection;
 
 [assembly: AssemblyTitle(zcMod.BuildInfo.Description)]
 [assembly: AssemblyDescription(zcMod.BuildInfo.Description)]

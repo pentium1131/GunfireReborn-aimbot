@@ -1,16 +1,10 @@
-﻿using MelonLoader;
-using UnityEngine;
-using UnityEngine.UI;
-using UnhollowerRuntimeLib;
-using Il2CppSystem.Collections.Generic;
-using System;
-using System.IO;
+﻿using DataHelper;
 using HeroCameraName;
+using Il2CppSystem.Collections.Generic;
 using Item;
-using BulletChange;
-using OCServerMoveNS;
-using DataHelper;
-using TMPro;
+using MelonLoader;
+using System;
+using UnityEngine;
 
 namespace zcMod
 {
@@ -35,26 +29,14 @@ namespace zcMod
             MelonLogger.Log("OnApplicationStart");
         }
 
-        public override void OnLevelIsLoading() // Runs when a Scene is Loading or when a Loading Screen is Shown. Currently only runs if the Mod is used in BONEWORKS.
-        {
-            MelonLogger.Log("OnLevelIsLoading");
-        }
 
-        public override void OnLevelWasLoaded(int level) // Runs when a Scene has Loaded.
-        {
-            MelonLogger.Log("OnLevelWasLoaded: " + level.ToString());
-        }
 
-        public override void OnLevelWasInitialized(int level) // Runs when a Scene has Initialized.
-        {
-            MelonLogger.Log("OnLevelWasInitialized: " + level.ToString());
-        }
 
         public override void OnUpdate() // Runs once per frame.
         {
             try
             {
-                if (HeroCameraManager.HeroObj != null && HeroCameraManager.HeroObj.BulletPreFormCom != null && HeroCameraManager.HeroObj.BulletPreFormCom.weapondict != null) 
+                if (HeroCameraManager.HeroObj != null && HeroCameraManager.HeroObj.BulletPreFormCom != null && HeroCameraManager.HeroObj.BulletPreFormCom.weapondict != null)
                 {
                     foreach (KeyValuePair<int, WeaponPerformanceObj> Weapon in HeroCameraManager.HeroObj.BulletPreFormCom.weapondict)
                     {
@@ -65,24 +47,31 @@ namespace zcMod
                                 Weapon.value.WeaponAttr.Radius = 500f;//爆炸范围
                         }
 
-                        if (Weapon.value.WeaponAttr.Accuracy != 10000) 
-                            Weapon.value.WeaponAttr.Accuracy = 10000;//子弹不扩散
+                        if (Weapon.value.WeaponAttr.Accuracy[0] != 10000)
+                        {
+
+                            List<int> accuracy = Weapon.value.WeaponAttr.Accuracy;
+                            accuracy[0] = 100000;
+                            Weapon.value.WeaponAttr.Accuracy = accuracy;
+                        }
+
                         if (Weapon.value.WeaponAttr.AttDis != 500f)
                             Weapon.value.WeaponAttr.AttDis = 500f;//射程
                         //Weapon.value.WeaponAttr.Pierce = 99; //穿透力，改了好像无效果?
 
-                        if (Weapon.value.WeaponAttr.BulletSpeed >= 50f && Weapon.value.WeaponAttr.BulletSpeed != 55f)//弹道速度,某些武器改了会打不到怪
+                        if (Weapon.value.WeaponAttr.BulletSpeed >= 50f && Weapon.value.WeaponAttr.BulletSpeed != 55f|| Weapon.value.WeaponAttr.BulletSpeed == 30f)//弹道速度,某些武器改了会打不到怪
                         {
                             if (Weapon.value.WeaponAttr.BulletSpeed != 500f)
                                 Weapon.value.WeaponAttr.BulletSpeed = 500f;
                         }
-                        else if (Weapon.value.WeaponAttr.BulletSpeed == 30f) 
+                       
+                        if (Weapon.value.WeaponAttr.Stability[0] != 10000)
                         {
-                            if (Weapon.value.WeaponAttr.BulletSpeed != 500f)
-                                Weapon.value.WeaponAttr.BulletSpeed = 500f;
+                            List<int> Stability = Weapon.value.WeaponAttr.Accuracy;
+                            Stability[0] = 100000;
+                            Weapon.value.WeaponAttr.Accuracy = Stability;//后坐力
                         }
-                        if (Weapon.value.WeaponAttr.Stability != 10000)
-                            Weapon.value.WeaponAttr.Stability = 10000;//后坐力
+
                         if (Weapon.value.WeaponAttr.Radius > 0f)
                         {
                             if (Weapon.value.WeaponAttr.Radius < 9f)
@@ -90,7 +79,7 @@ namespace zcMod
                         }
                     }
                 }
-                if (Input.GetKeyUp(KeyCode.Home))//暴力模式全图锁
+                if (Input.GetKeyUp(KeyCode.Home))//开启全图透视
                 {
                     shownpc = !shownpc;
                 }
@@ -120,14 +109,14 @@ namespace zcMod
                 {
                     limitangle = !limitangle;
                 }
-                
+
                 //if (Input.GetMouseButton(1)) 
                 if (Input.GetKey(KeyCode.F))//按F键自瞄(请按个人喜好修改)
                 {
                     List<NewPlayerObject> monsters = NewPlayerManager.GetMonsters();
                     if (monsters != null)
                     {
-                        
+
                         Vector3 campos = CameraManager.MainCamera.position;
 
                         Transform nearmons = null;
@@ -154,14 +143,14 @@ namespace zcMod
                             Ray ray = new Ray(campos, vec);
                             var hits = Physics.RaycastAll(ray, curdis);
                             bool visible = true;
-                            foreach(var hit in hits)
+                            foreach (var hit in hits)
                             {
                                 if (showallobjinfo)
                                 {
                                     MelonLogger.Log(hit.collider.name);
                                     MelonLogger.Log(hit.collider.gameObject.layer.ToString());
                                 }
-                                
+
                                 if (hit.collider.gameObject.layer == 0 || hit.collider.gameObject.layer == 30 || hit.collider.gameObject.layer == 31) //&& hit.collider.name.Contains("_")
                                 {
                                     if (showobjinfo)
@@ -176,7 +165,7 @@ namespace zcMod
                             }
                             if (visible)
                             {
-                                
+
                                 if (curdis < neardis)
                                 {
                                     neardis = curdis;
@@ -252,7 +241,9 @@ namespace zcMod
             MelonLogger.Log("OnApplicationQuit");
         }
 
+#pragma warning disable CS0672 // 成员“zcMod.OnModSettingsApplied()”将重写过时的成员“MelonBase.OnModSettingsApplied()”。请向“zcMod.OnModSettingsApplied()”中添加 Obsolete 特性。
         public override void OnModSettingsApplied() // Runs when Mod Preferences get saved to UserData/modprefs.ini.
+#pragma warning restore CS0672 // 成员“zcMod.OnModSettingsApplied()”将重写过时的成员“MelonBase.OnModSettingsApplied()”。请向“zcMod.OnModSettingsApplied()”中添加 Obsolete 特性。
         {
             MelonLogger.Log("OnModSettingsApplied");
         }
@@ -264,39 +255,52 @@ namespace zcMod
 
         public bool ShowObject(NewPlayerObject obj)
         {
-            if (obj.FightType == ServerDefine.FightType.NWARRIOR_DROP_EQUIP)
-                return true;
-            else if (obj.FightType == ServerDefine.FightType.NWARRIOR_DROP_RELIC)
-                return true;
-            else if (obj.FightType == ServerDefine.FightType.NWARRIOR_NPC_SMITH)
-                return true;
-            else if (obj.FightType == ServerDefine.FightType.NWARRIOR_NPC_SHOP)
-                return true;
-            else if (obj.FightType == ServerDefine.FightType.WARRIOR_OBSTACLE_NORMAL && (obj.Shape == 4406 || obj.Shape == 4419 || obj.Shape == 4427))
-                return true;
-            else if (obj.FightType == ServerDefine.FightType.NWARRIOR_NPC_EVENT)
-                return true;
-            else if (obj.FightType == ServerDefine.FightType.NWARRIOR_NPC_ITEMBOX)
-                return true;
+            if (obj.FightType == ServerDefine.FightType.NWARRIOR_DROP_EQUIP) return true;
+            else if (obj.FightType == ServerDefine.FightType.NWARRIOR_DROP_RELIC) return true;
+            else if (obj.FightType == ServerDefine.FightType.NWARRIOR_NPC_SMITH) return true;
+            else if (obj.FightType == ServerDefine.FightType.NWARRIOR_NPC_SHOP) return true;
+            else if ((obj.FightType == ServerDefine.FightType.WARRIOR_OBSTACLE_NORMAL && (obj.Shape == 4406 || obj.Shape == 4419 || obj.Shape == 4427))) return true;
+            else if ((obj.FightType == ServerDefine.FightType.NWARRIOR_NPC_TRANSFER && (obj.Shape == 4016 || obj.Shape == 4009 || obj.Shape == 4019))) return true;
+            else if (obj.FightType == ServerDefine.FightType.NWARRIOR_NPC_EVENT) return true;
+            else if (obj.FightType == ServerDefine.FightType.NWARRIOR_NPC_ITEMBOX) return true;
+            else if (obj.FightType == ServerDefine.FightType.NWARRIOR_NPC_GSCASHSHOP) return true;
             return false;
 
         }
         public String FightTypeToString(NewPlayerObject obj)
         {
             if (obj.FightType == ServerDefine.FightType.NWARRIOR_DROP_EQUIP)
+            {
                 return DataMgr.GetWeaponData(obj.Shape).Name + " +" + obj.DropOPCom.WeaponInfo.SIProp.Grade.ToString();
-            else if (obj.FightType == ServerDefine.FightType.NWARRIOR_DROP_RELIC)
+            }
+            if (obj.FightType == ServerDefine.FightType.NWARRIOR_DROP_RELIC)
+            {
                 return DataMgr.GetRelicData(obj.DropOPCom.RelicSid).Name;
-            else if (obj.FightType == ServerDefine.FightType.NWARRIOR_NPC_SMITH)
+            }
+            if (obj.FightType == ServerDefine.FightType.NWARRIOR_NPC_SMITH)
+            {
                 return "工匠";
-            else if (obj.FightType == ServerDefine.FightType.NWARRIOR_NPC_SHOP)
+            }
+            if (obj.FightType == ServerDefine.FightType.NWARRIOR_NPC_SHOP)
+            {
                 return "商人";
-            else if (obj.FightType == ServerDefine.FightType.WARRIOR_OBSTACLE_NORMAL && (obj.Shape == 4406 || obj.Shape == 4419 || obj.Shape == 4427))
+            }
+            if (obj.FightType == ServerDefine.FightType.NWARRIOR_NPC_EVENT)
+            {
+                return "事件宝箱";
+            }
+            if (obj.FightType == ServerDefine.FightType.NWARRIOR_NPC_ITEMBOX)
+            {
+                return "奖励宝箱";
+            }
+            if (obj.FightType == ServerDefine.FightType.WARRIOR_OBSTACLE_NORMAL || obj.FightType == ServerDefine.FightType.NWARRIOR_NPC_TRANSFER)
+            {
                 return "秘境";
-            else if (obj.FightType == ServerDefine.FightType.NWARRIOR_NPC_EVENT)
-                return "宝箱";
-            else if (obj.FightType == ServerDefine.FightType.NWARRIOR_NPC_ITEMBOX)
-                return "宝箱";
+            }
+            if (obj.FightType == ServerDefine.FightType.NWARRIOR_NPC_GSCASHSHOP)
+            {
+                return "奇货商";
+            }
             return "unk";
         }
 
